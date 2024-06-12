@@ -1,0 +1,148 @@
+{
+    "policyData": {
+        "agentCode": "99998",
+        "commCuadroCode": "80",
+        "documCode": "HELE750101",
+        "paymentMethodCode": "4",
+        "branchCode": "100",
+        "policyEffectiveDate": "22/12/2021",
+        "policyEndDate": "22/12/2022",
+        "prorationMark": "S",
+        "contractNumber": "10059",
+        "groupPolicyNumber": "1TEMPORAL1001",
+        "durationType": "1",
+        "managerType": "AG"
+    },
+    "variableData": [
+        {
+            "riskNumber": "0",
+            "levelType": "1",
+            "fields": [
+                {
+                    "fieldCode": "NUM_CLIENTE_NE",
+                    "fieldValue": "1234532333200"
+                },
+                {
+                    "fieldCode": "NUM_ASESOR_NE",
+                    "fieldValue": "67890"
+                },
+                {
+                    "fieldCode": "COD_ENVIO",
+                    "fieldValue": "1"
+                },
+                {
+                    "fieldCode": "COD_MODALIDAD",
+                    "fieldValue": "10011"
+                },
+                {
+                    "fieldCode": "COD_ZONA",
+                    "fieldValue": "99"
+                },
+                {
+                    "fieldCode": "COD_RIESGO",
+                    "fieldValue": "0"
+                },
+                {
+                    "fieldCode": "TIP_RIESGO",
+                    "fieldValue": "0"
+                },
+                {
+                    "fieldCode": "VAL_DURACION_SEGURO",
+                    "fieldValue": "1"
+                },
+                {
+                    "fieldCode": "TIP_DEDUCIBLE",
+                    "fieldValue": "2"
+                },
+                {
+                    "fieldCode": "TIP_COMISION",
+                    "fieldValue": "1"
+                },
+                {
+                    "fieldCode": "VAL_FOLIO_SOLICITUD",
+                    "fieldValue": "0"
+                },
+                {
+                    "fieldCode": "MCA_BENEFMEN",
+                    "fieldValue": "N"
+                },
+                {
+                    "fieldCode": "MCA_EMPLEADO",
+                    "fieldValue": "N"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "2",
+            "fields": [
+                {
+                    "fieldCode": "FEC_NACIMIENTO",
+                    "fieldValue": "01011975"
+                },
+                {
+                    "fieldCode": "MCA_SEXO",
+                    "fieldValue": "0"
+                },
+                {
+                    "fieldCode": "MCA_FUMAR",
+                    "fieldValue": "0"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "3",
+            "fields": [
+                {
+                    "fieldCode": "DTO_FUMAR",
+                    "fieldValue": "0"
+                },
+                {
+                    "fieldCode": "DTO_SEXO",
+                    "fieldValue": "0"
+                },
+                {
+                    "fieldCode": "DTO_AGENTE_DIR",
+                    "fieldValue": "0"
+                }
+            ]
+        }
+    ],
+    "coverage": [
+        {
+            "coverageCode": "1000",
+            "sumInsuredAmn": "330000"
+        },
+        {
+            "coverageCode": "1004",
+            "sumInsuredAmn": "330000"
+        }
+    ],
+    "insuredData": {
+        "contractingFistName": "HECTOR",
+        "contractingMiddleName": "HERNANDEZ",
+        "contractingLastName": "LOPEZ",
+        "documCode": "HELE750101",
+        "maritalStatusCode": "S",
+        "stateCode": "9",
+        "nationalityCode": "MEX",
+        "occupationCode": "4",
+        "countryCode": "MEX",
+        "postalCode": "54700",
+        "professionCode": "32",
+        "provinceCode": "9001",
+        "curp": "HELE750101HMCMMC01",
+        "realAge": "46",
+        "email": "hec@mail.com",
+        "dateBirth": "01/01/1975",
+        "personType": "S",
+        "gender": "1",
+        "addressName1": "CALLE TEST",
+        "addressName2": "189",
+        "addressName3": "COLONIA TEST",
+        "insuredObservations": "1.75,60,25",
+        "beneficiaryType": "2",
+        "telephoneNumber": "5558711111"
+}
+}
