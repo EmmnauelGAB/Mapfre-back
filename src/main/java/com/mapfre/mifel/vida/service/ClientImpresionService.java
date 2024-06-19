@@ -33,7 +33,7 @@ public interface ClientImpresionService {
      * @param nmi
      * @return
      */
-    public MifelResponse<EmisionResponse> getImpresionEmision(String poliza, String strNegocio, String strEndoso, String nmi, String emailDestiny);
+    public MifelResponse<EmisionResponse> getImpresionEmision(String poliza, String strNegocio, String strEndoso, String nmi, String emailDestiny, String documentCode);
 
     /**
      * Downloads the file using the documentID

@@ -290,4 +290,10 @@ public static class HeadersResponse {
         public static final String[] DATOS_W2990709_MMX = {"EMAIL", "COD_DOCUM"};
 
     }
+    
+    public static class Impresion {
+        // Nueva constante agregada
+        public static final String CODIGO_IMPRESION_CARATULA_EXTREM = "P";
+    }
+    
 }

@@ -31,12 +31,15 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.mapfre.mifel.vida.exception.NoContentException;
 import com.mapfre.mifel.vida.exception.WSClientException;
+import com.mapfre.mifel.vida.model.enumeration.DocumentType;
 import com.mapfre.mifel.vida.model.request.EmailRequest;
 import com.mapfre.mifel.vida.model.response.EmisionResponse;
 import com.mapfre.mifel.vida.model.response.MifelResponse;
 import com.mapfre.mifel.vida.service.ClientImpresionService;
+import com.mapfre.mifel.vida.service.ClientImpresionServiceHP;
 import com.mapfre.mifel.vida.service.EmailService;
 import com.mapfre.mifel.vida.utils.VidaULContants;
+import com.mapfre.mifel.vida.utils.VidaULContants.Impresion;
 
 @Service
 public class ClientImpresionServiceImpl implements ClientImpresionService {
@@ -78,6 +81,9 @@ public class ClientImpresionServiceImpl implements ClientImpresionService {
 	
 	 @Autowired
 	 private EmailService emailService;
+	 
+	 @Autowired
+		ClientImpresionServiceHP clientImpresionServiceHP;
 
 	@Override
 	public String getImpresionId(String poliza, String spto, String codCia) {
@@ -153,7 +159,7 @@ public class ClientImpresionServiceImpl implements ClientImpresionService {
 	}
 
 	@Override
-	public MifelResponse<EmisionResponse> getImpresionEmision(String poliza, String strNegocio, String strEndoso, String nmi, String emailDestiny)  {
+	public MifelResponse<EmisionResponse> getImpresionEmision(String poliza, String strNegocio, String strEndoso, String nmi, String emailDestiny, String documentCode)  {
 		EmisionResponse responseEmision = new EmisionResponse();
 		MifelResponse<EmisionResponse> responseMifel = new MifelResponse<>();
 		try {
@@ -165,7 +171,9 @@ public class ClientImpresionServiceImpl implements ClientImpresionService {
 			if(response.getStatusCode() != HttpStatus.OK) {
 				throw new Exception("Ocurrió un problema al querer obtener el pdf de emisión");
 			}
-	        byte[] pdfBytes = response.getBody();
+			DocumentType documentType = mapDocumentCodeToDocumentType(documentCode);
+			byte[] pdfBytes = clientImpresionServiceHP.getPdfHpExstream(poliza, documentType);
+	        // byte[] pdfBytes = response.getBody();
 			// byte[] pdfBytes = this.createPdfWithText(); Descomentar si se quiere ejecutar de manera local
 			
 	        if (pdfBytes != null) {
@@ -203,6 +211,16 @@ public class ClientImpresionServiceImpl implements ClientImpresionService {
 		}
 		
 	}
+	
+	 private DocumentType mapDocumentCodeToDocumentType(String documentCode) {
+	        switch (documentCode) {
+	            case Impresion.CODIGO_IMPRESION_CARATULA_EXTREM:
+	                return DocumentType.POLIZA_CARATULA;
+	            // Agrega más casos según sea necesario
+	            default:
+	                throw new IllegalArgumentException("Código de documento no válido: " + documentCode);
+	        }
+	    }
 	
 	public MifelResponse<Object> sendEmailDocument(String emailDestiny, String docEmision){
 		MifelResponse<Object> responseEmail = new MifelResponse<>();

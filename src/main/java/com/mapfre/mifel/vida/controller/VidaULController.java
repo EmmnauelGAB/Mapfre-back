@@ -54,6 +54,7 @@ import com.mapfre.mifel.vida.service.GenerationPdfDocumentService;
 import com.mapfre.mifel.vida.service.IPaymentService;
 import com.mapfre.mifel.vida.service.VidaULService;
 import com.mapfre.mifel.vida.utils.VidaULContants;
+import com.mapfre.mifel.vida.utils.VidaULContants.Impresion;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -223,7 +224,7 @@ public class VidaULController {
 		logger.debug("Comenzando a descargar pdf emision: {}", request);
 		 MifelResponse<EmisionResponse> response = new MifelResponse<>();
 		response = this.clientImpresionService.getImpresionEmision(request.getNumPoliza(), 
-				request.getNegocio(), request.getNumEndoso(), request.getNmi(), request.getEmailDestino());
+				request.getNegocio(), request.getNumEndoso(), request.getNmi(), request.getEmailDestino(), Impresion.CODIGO_IMPRESION_CARATULA_EXTREM);
 		return new ResponseEntity<>(response, response.getStatus() != VidaULContants.HeadersResponse.ESTATUS_FALLIDO ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
 	}
 	

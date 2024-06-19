@@ -98,6 +98,9 @@ public class PaymentServiceImpl implements IPaymentService {
 	@Override
 	public PaymentCobranzaResponse payment(PaymentRequest request) {
 		PaymentCobranzaResponse response = new PaymentCobranzaResponse();
+		
+		// Log del request recibido
+        LOGGER.info("Iniciando procesamiento del pago para la solicitud: {}", request);
 
 		String respuestaCobranza = null;
 
@@ -111,8 +114,13 @@ public class PaymentServiceImpl implements IPaymentService {
 		try {
 			
 			String requestXML = marshall(paymentXML);
+			LOGGER.info("XML generado para la solicitud: {}", requestXML);
 			
 			HttpEntity<String> entity = new HttpEntity<>("xml="+requestXML, headers);
+			
+			 // Log antes de enviar la solicitud
+            LOGGER.info("Enviando solicitud HTTP POST a URL: {}", urlCobranza);
+            LOGGER.debug("Entidad HTTP: {}", entity);
 
 			responseXML = restTemplate.exchange(urlCobranza, HttpMethod.POST, entity, String.class).getBody();
 			LOGGER.debug("La respuesta XML{}", responseXML);
@@ -130,6 +138,8 @@ public class PaymentServiceImpl implements IPaymentService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 
 		return PaymentMapper.paymentXMLJson(respuestaCobranzaOBJ);
 		/**
